@@ -1,5 +1,7 @@
 package divelnick.ru.vank.ui.splash;
 
 
-public class SplashModel {
+import divelnick.ru.vank.base.BaseModel;
+
+public class SplashModel extends BaseModel{
 }
