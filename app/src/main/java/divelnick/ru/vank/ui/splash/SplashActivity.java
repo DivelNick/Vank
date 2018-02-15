@@ -1,15 +1,15 @@
 package divelnick.ru.vank.ui.splash;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
 import dagger.Provides;
 import divelnick.ru.vank.R;
+import divelnick.ru.vank.base.BaseActivity;
 import divelnick.ru.vank.di.DaggerService;
 
-public class SplashActivity extends AppCompatActivity implements SplashView {
+public class SplashActivity extends BaseActivity implements SplashView {
 
     @Inject
     SplashPresenter mSplashPresenter;
@@ -19,6 +19,8 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        createDaggerComponent();
+
     }
 
 
@@ -26,7 +28,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
     //region----------------------------------DI------------------------------------------
 
     @dagger.Module
-    private class Module{
+    public class Module{
         @SplashScope
         @Provides
         SplashPresenter providePresenter(){
@@ -36,7 +38,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @SplashScope
     @dagger.Component(modules = Module.class)
-    private interface Component{
+    public interface Component{
         void inject(SplashActivity activity);
     }
 
@@ -58,7 +60,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
     protected void onDestroy() {
         if(isFinishing()) {
             mSplashPresenter.dropView();
-            DaggerService.unregisterScope(SplashScope.class);
+//            DaggerService.unregisterScope(SplashScope.class);
         }
         super.onDestroy();
     }

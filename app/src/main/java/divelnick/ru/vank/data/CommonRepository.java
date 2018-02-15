@@ -10,6 +10,7 @@ import divelnick.ru.vank.data.network.ApiService;
 import divelnick.ru.vank.di.DaggerService;
 import divelnick.ru.vank.di.components.DaggerRepositoryComponent;
 import divelnick.ru.vank.di.components.RepositoryComponent;
+import divelnick.ru.vank.di.modules.NetworkModule;
 
 public class CommonRepository implements Repository{
 
@@ -31,9 +32,10 @@ public class CommonRepository implements Repository{
         if(repositoryComponent == null){
             repositoryComponent = DaggerRepositoryComponent.builder()
                     .appComponent(App.getAppComponent())
+                    .networkModule(new NetworkModule())
                     .build();
 
-            DaggerService.registerComponent(RepositoryComponent.class,repositoryComponent);
+            DaggerService.registerComponent(RepositoryComponent.class, repositoryComponent);
         }
 
         repositoryComponent.inject(this);
