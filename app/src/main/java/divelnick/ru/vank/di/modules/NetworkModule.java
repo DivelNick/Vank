@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import divelnick.ru.vank.Const;
+import divelnick.ru.vank.utils.Const;
 import divelnick.ru.vank.data.network.ApiService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

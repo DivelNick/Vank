@@ -1,4 +1,4 @@
-package divelnick.ru.vank;
+package divelnick.ru.vank.utils;
 
 
 public interface Const {
