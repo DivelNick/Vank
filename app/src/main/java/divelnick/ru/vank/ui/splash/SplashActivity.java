@@ -34,24 +34,24 @@ public class SplashActivity extends BaseActivity implements SplashView {
     //region----------------------------------DI------------------------------------------
 
     @dagger.Module
-    public class Module{
+    public class Module {
         @SplashScope
         @Provides
-        SplashPresenter providePresenter(){
+        SplashPresenter providePresenter() {
             return new SplashPresenter();
         }
     }
 
     @SplashScope
     @dagger.Component(modules = Module.class)
-    public interface Component{
+    public interface Component {
         void inject(SplashActivity activity);
     }
 
-    private void createDaggerComponent(){
+    private void createDaggerComponent() {
 
         Component component = DaggerService.getComponent(Component.class);
-        if(component == null){
+        if (component == null) {
             component = DaggerSplashActivity_Component.builder()
                     .module(new Module())
                     .build();
@@ -64,7 +64,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     protected void onDestroy() {
-        if(isFinishing()) {
+        if (isFinishing()) {
             mSplashPresenter.dropView();
             DaggerService.unregisterScope(SplashScope.class);
         }
