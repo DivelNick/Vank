@@ -5,9 +5,11 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import divelnick.ru.vank.data.managers.PrefsManager;
 
+@Module
 public class PrefsModule {
     @Singleton
     @Provides

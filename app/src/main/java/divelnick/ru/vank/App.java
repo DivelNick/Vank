@@ -4,7 +4,7 @@ package divelnick.ru.vank;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
-import com.orhanobut.hawk.Hawk;
+import com.vk.sdk.VKSdk;
 
 import divelnick.ru.vank.di.components.AppComponent;
 import divelnick.ru.vank.di.components.DaggerAppComponent;
@@ -18,12 +18,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Hawk.init(this).build();
-
         if(BuildConfig.DEBUG){
             Stetho.initializeWithDefaults(this);
         }
 
+        VKSdk.initialize(this);
 
         createDaggerAppComponent();
     }
