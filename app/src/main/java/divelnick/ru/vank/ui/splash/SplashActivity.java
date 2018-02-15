@@ -21,9 +21,15 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
         createDaggerComponent();
 
+        mSplashPresenter.takeView(this);
+        mSplashPresenter.initView();
+
     }
 
+    @Override
+    public void showIntro() {
 
+    }
 
     //region----------------------------------DI------------------------------------------
 
@@ -60,7 +66,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     protected void onDestroy() {
         if(isFinishing()) {
             mSplashPresenter.dropView();
-//            DaggerService.unregisterScope(SplashScope.class);
+            DaggerService.unregisterScope(SplashScope.class);
         }
         super.onDestroy();
     }

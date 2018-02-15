@@ -5,4 +5,6 @@ import divelnick.ru.vank.base.BaseView;
 
 interface SplashView extends BaseView{
 
+    void showIntro();
+
 }

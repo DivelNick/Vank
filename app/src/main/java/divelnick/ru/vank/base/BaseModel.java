@@ -12,7 +12,7 @@ import divelnick.ru.vank.di.components.ModelComponent;
 public class BaseModel {
 
     @Inject
-    CommonRepository mRepository;
+    protected CommonRepository mRepository;
 
     public BaseModel() {
         ModelComponent modelComponent = DaggerService.getComponent(ModelComponent.class);

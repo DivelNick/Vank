@@ -43,6 +43,13 @@ public class CommonRepository implements Repository{
 
     }
 
+    @Override
+    public boolean isIntroShown() {
+        return false;
+    }
 
+    @Override
+    public void setIntroShown(boolean isShown) {
 
+    }
 }
