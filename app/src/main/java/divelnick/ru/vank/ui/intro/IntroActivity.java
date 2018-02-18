@@ -11,7 +11,7 @@ import divelnick.ru.vank.R;
 import divelnick.ru.vank.base.BaseActivity;
 import divelnick.ru.vank.di.DaggerService;
 
-public class IntroActivity extends BaseActivity {
+public class IntroActivity extends BaseActivity implements IntroView {
 
     @Inject
     IntroPresenter mIntroPresenter;
@@ -22,7 +22,12 @@ public class IntroActivity extends BaseActivity {
         setContentView(R.layout.activity_intro);
 
         createDaggerComponent();
+
+        mIntroPresenter.takeView(this);
+        mIntroPresenter.initView();
     }
+
+
 
 
     //region--------------------------------DI-------------------------------------

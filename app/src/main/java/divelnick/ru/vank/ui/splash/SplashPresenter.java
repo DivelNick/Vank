@@ -31,6 +31,10 @@ public class SplashPresenter extends BasePresenter<SplashView> {
         mSplashModel.setAuthorized(true);
     }
 
+    void loginBtnClick(){
+        getView().authorize();
+    }
+
     //region------------------------------------DI----------------------------------------------
 
 

@@ -18,7 +18,7 @@ public class IntroPresenter extends BasePresenter<IntroView> {
 
     @Override
     public void initView() {
-
+        mIntroModel.setIntroShown(true);
     }
 
 

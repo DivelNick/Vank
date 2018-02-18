@@ -13,6 +13,7 @@ import com.vk.sdk.api.VKError;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import dagger.Provides;
 import divelnick.ru.vank.R;
 import divelnick.ru.vank.base.BaseActivity;
@@ -35,6 +36,8 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
         createDaggerComponent();
 
+        ButterKnife.bind(this);
+
         mSplashPresenter.takeView(this);
         mSplashPresenter.initView();
 
@@ -54,6 +57,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     @Override
     public void showLoginBtn() {
         mLoginButton.setVisibility(View.VISIBLE);
+        mLoginButton.setOnClickListener((v) -> mSplashPresenter.loginBtnClick());
     }
 
     @Override
@@ -63,7 +67,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
             public void onResult(VKAccessToken res) {
                 // Пользователь успешно авторизовался
                 mSplashPresenter.saveAccessToken(new AccessToken(res.secret, res.userId, res.email, res.accessToken));
-
             }
 
             @Override

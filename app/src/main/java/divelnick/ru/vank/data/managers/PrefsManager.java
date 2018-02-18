@@ -30,7 +30,7 @@ public class PrefsManager {
     }
 
     public boolean isAuthorized() {
-        return Hawk.get(AUTHORIZED_KEY);
+        return Hawk.get(AUTHORIZED_KEY, false);
     }
 
     public void setAuthotrized(boolean isAuthorized) {
@@ -38,7 +38,7 @@ public class PrefsManager {
     }
 
     public boolean isIntroShown() {
-        return Hawk.put(INTRO_SHOWN_KEY, Boolean.class);
+        return Hawk.get(INTRO_SHOWN_KEY, false);
     }
 
     public void setIntroShown(boolean isShown) {
