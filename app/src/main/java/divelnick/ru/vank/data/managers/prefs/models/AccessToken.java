@@ -1,4 +1,4 @@
-package divelnick.ru.vank.data.managers.models;
+package divelnick.ru.vank.data.managers.prefs.models;
 
 
 public class AccessToken {

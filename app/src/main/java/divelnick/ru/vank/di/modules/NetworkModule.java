@@ -9,8 +9,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import divelnick.ru.vank.utils.Const;
+import divelnick.ru.vank.data.managers.prefs.PrefsManager;
 import divelnick.ru.vank.data.network.ApiService;
+import divelnick.ru.vank.data.network.interceptors.TokenInterceptor;
+import divelnick.ru.vank.utils.Const;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -21,8 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkModule {
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient(Context context) {
-        return createClient(context);
+    OkHttpClient provideOkHttpClient(Context context, PrefsManager prefsManager) {
+        return createClient(context, prefsManager);
     }
 
     @Provides
@@ -37,9 +39,10 @@ public class NetworkModule {
         return retrofit.create(ApiService.class);
     }
 
-    private OkHttpClient createClient(Context context) {
+    private OkHttpClient createClient(Context context, PrefsManager prefsManager) {
         return new OkHttpClient.Builder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(new TokenInterceptor(prefsManager.getToken().getAccessToken()))
                 .connectTimeout(5000, TimeUnit.MILLISECONDS)
                 .build();
     }

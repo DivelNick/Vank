@@ -15,7 +15,7 @@ public class AppModule {
     }
 
     @Provides
-    public Context provideContext(){
+    Context provideContext(){
         return mContext;
     }
 

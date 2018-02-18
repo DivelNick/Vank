@@ -5,7 +5,7 @@ import javax.inject.Inject;
 
 import dagger.Provides;
 import divelnick.ru.vank.base.BasePresenter;
-import divelnick.ru.vank.data.managers.models.AccessToken;
+import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 import divelnick.ru.vank.di.DaggerService;
 
 public class SplashPresenter extends BasePresenter<SplashView> {

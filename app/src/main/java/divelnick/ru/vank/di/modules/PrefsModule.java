@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import divelnick.ru.vank.data.managers.PrefsManager;
+import divelnick.ru.vank.data.managers.prefs.PrefsManager;
 
 @Module
 public class PrefsModule {

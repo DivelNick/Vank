@@ -1,11 +1,11 @@
-package divelnick.ru.vank.data.managers;
+package divelnick.ru.vank.data.managers.prefs;
 
 
 import android.content.Context;
 
 import com.orhanobut.hawk.Hawk;
 
-import divelnick.ru.vank.data.managers.models.AccessToken;
+import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 
 public class PrefsManager {
 
@@ -17,15 +17,15 @@ public class PrefsManager {
         Hawk.init(context).build();
     }
 
-    public void setAccessToken(AccessToken accessToken) {
+    public void setToken(AccessToken accessToken) {
         Hawk.put(VK_ACCESS_TOKEN_KEY, accessToken);
     }
 
-    public AccessToken getAccessToken() {
+    public AccessToken getToken() {
         return Hawk.get(VK_ACCESS_TOKEN_KEY);
     }
 
-    public void clearAccessToken() {
+    public void clearToken() {
         Hawk.delete(VK_ACCESS_TOKEN_KEY);
     }
 
@@ -33,7 +33,7 @@ public class PrefsManager {
         return Hawk.get(AUTHORIZED_KEY, false);
     }
 
-    public void setAuthotrized(boolean isAuthorized) {
+    public void setAuthorized(boolean isAuthorized) {
         Hawk.put(AUTHORIZED_KEY, isAuthorized);
     }
 

@@ -5,15 +5,18 @@ import javax.inject.Inject;
 
 import divelnick.ru.vank.App;
 import divelnick.ru.vank.data.managers.DbManager;
-import divelnick.ru.vank.data.managers.PrefsManager;
-import divelnick.ru.vank.data.managers.models.AccessToken;
+import divelnick.ru.vank.data.managers.prefs.PrefsManager;
+import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 import divelnick.ru.vank.data.network.ApiService;
+import divelnick.ru.vank.data.network.RestTransformer;
+import divelnick.ru.vank.data.network.response.User;
 import divelnick.ru.vank.di.DaggerService;
 import divelnick.ru.vank.di.components.DaggerRepositoryComponent;
 import divelnick.ru.vank.di.components.RepositoryComponent;
 import divelnick.ru.vank.di.modules.NetworkModule;
+import io.reactivex.Observable;
 
-public class CommonRepository implements Repository{
+public class CommonRepository implements Repository {
 
     @Inject
     PrefsManager mPrefsManager;
@@ -24,13 +27,14 @@ public class CommonRepository implements Repository{
     @Inject
     ApiService mApiService;
 
+    private final RestTransformer mRestTransformer;
 
-    public CommonRepository(){
+    public CommonRepository() {
         //если мы не создаем модули вручную то даггер сам сгенерит создание классов
         //с конструктором по умолчанию в данном случае это NetworkModule
         //LocalModule и PrefsModule поэтому мы не создаем их самостоятельно
         RepositoryComponent repositoryComponent = DaggerService.getComponent(RepositoryComponent.class);
-        if(repositoryComponent == null){
+        if (repositoryComponent == null) {
             repositoryComponent = DaggerRepositoryComponent.builder()
                     .appComponent(App.getAppComponent())
                     .networkModule(new NetworkModule())
@@ -41,7 +45,14 @@ public class CommonRepository implements Repository{
 
         repositoryComponent.inject(this);
 
+        mRestTransformer = new RestTransformer<>();
+    }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Observable<User> getUser(String user_ids, String fields) {
+        return mApiService.usersGet(user_ids, fields)
+                .compose((RestTransformer<User>) mRestTransformer);
     }
 
     @Override
@@ -61,11 +72,11 @@ public class CommonRepository implements Repository{
 
     @Override
     public void setAuthorized(boolean isAuthorized) {
-        mPrefsManager.setAuthotrized(isAuthorized);
+        mPrefsManager.setAuthorized(isAuthorized);
     }
 
     @Override
     public void setAccessToken(AccessToken accessToken) {
-        mPrefsManager.setAccessToken(accessToken);
+        mPrefsManager.setToken(accessToken);
     }
 }

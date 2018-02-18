@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import dagger.Provides;
 import divelnick.ru.vank.R;
 import divelnick.ru.vank.base.BaseActivity;
-import divelnick.ru.vank.data.managers.models.AccessToken;
+import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 import divelnick.ru.vank.di.DaggerService;
 import divelnick.ru.vank.ui.intro.IntroActivity;
 

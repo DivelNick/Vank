@@ -2,7 +2,7 @@ package divelnick.ru.vank.ui.splash;
 
 
 import divelnick.ru.vank.base.BaseModel;
-import divelnick.ru.vank.data.managers.models.AccessToken;
+import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 
 class SplashModel extends BaseModel {
 
