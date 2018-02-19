@@ -40,11 +40,16 @@ public class NetworkModule {
     }
 
     private OkHttpClient createClient(Context context, PrefsManager prefsManager) {
-        return new OkHttpClient.Builder()
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .addInterceptor(new TokenInterceptor(prefsManager.getToken().getAccessToken()))
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .build();
+                .connectTimeout(5000, TimeUnit.MILLISECONDS);
+
+        if (prefsManager.isAuthorized()) {
+            builder.addInterceptor(new TokenInterceptor(prefsManager.getToken().getAccessToken()));
+        }
+
+        return builder.build();
     }
 
     private Retrofit createRetrofit(OkHttpClient okHttpClient) {

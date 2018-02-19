@@ -9,5 +9,7 @@ interface SplashView extends BaseView {
 
     void authorize();
 
+    void closeSplash(int delay);
+
     void showLoginBtn();
 }

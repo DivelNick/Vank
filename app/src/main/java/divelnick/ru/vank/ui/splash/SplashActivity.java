@@ -2,6 +2,7 @@ package divelnick.ru.vank.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,6 +21,7 @@ import divelnick.ru.vank.base.BaseActivity;
 import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 import divelnick.ru.vank.di.DaggerService;
 import divelnick.ru.vank.ui.intro.IntroActivity;
+import divelnick.ru.vank.ui.main.MainActivity;
 
 public class SplashActivity extends BaseActivity implements SplashView {
 
@@ -58,6 +60,13 @@ public class SplashActivity extends BaseActivity implements SplashView {
     public void showLoginBtn() {
         mLoginButton.setVisibility(View.VISIBLE);
         mLoginButton.setOnClickListener((v) -> mSplashPresenter.loginBtnClick());
+    }
+
+    @Override
+    public void closeSplash(int delay) {
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        }, delay);
     }
 
     @Override

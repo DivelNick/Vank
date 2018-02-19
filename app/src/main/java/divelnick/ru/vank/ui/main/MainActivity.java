@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
 
 
+
     //region---------------------------------DI--------------------------------------------
 
     @dagger.Module

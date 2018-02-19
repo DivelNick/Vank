@@ -23,6 +23,8 @@ public class SplashPresenter extends BasePresenter<SplashView> {
             getView().showIntro();
         } else if (!mSplashModel.isAuthorized()) {
             getView().showLoginBtn();
+        } else {
+            getView().closeSplash(1000);
         }
     }
 
