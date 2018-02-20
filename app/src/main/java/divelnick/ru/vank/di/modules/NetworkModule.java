@@ -45,8 +45,10 @@ public class NetworkModule {
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .connectTimeout(5000, TimeUnit.MILLISECONDS);
 
+
         if (prefsManager.isAuthorized()) {
-            builder.addInterceptor(new TokenInterceptor(prefsManager.getToken().getAccessToken()));
+            TokenInterceptor tokenInterceptor = new TokenInterceptor(prefsManager.getToken().getAccessToken());
+            builder.addInterceptor(tokenInterceptor);
         }
 
         return builder.build();

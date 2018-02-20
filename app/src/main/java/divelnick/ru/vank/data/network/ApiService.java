@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @GET("method/get")
+    @GET("method/users.get")
     Observable<Response<User>> usersGet(@Query("user_ids") String userIds,
                                         @Query("fields") String fields);
 

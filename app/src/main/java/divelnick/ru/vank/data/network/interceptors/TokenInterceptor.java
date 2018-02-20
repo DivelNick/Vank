@@ -1,6 +1,7 @@
 package divelnick.ru.vank.data.network.interceptors;
 
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import okhttp3.Response;
 
 public class TokenInterceptor implements Interceptor {
 
-    public static final String TAG = TokenInterceptor.class.getSimpleName();
+    private static final String TAG = TokenInterceptor.class.getSimpleName();
 
     private String mAccessToken;
 
@@ -22,20 +23,22 @@ public class TokenInterceptor implements Interceptor {
     }
 
     @Override
-    public Response intercept(Chain chain) throws IOException {
-
-        Request request = chain.request();
+    public Response intercept(@NonNull Chain chain) throws IOException {
 
         Log.i(TAG, "access_token: " + mAccessToken);
 
-        HttpUrl url = request
-                .url()
-                .newBuilder()
+        Request original = chain.request();
+        HttpUrl originalHttpUrl = original.url();
+
+        HttpUrl url = originalHttpUrl.newBuilder()
                 .addQueryParameter("access_token", mAccessToken)
                 .addQueryParameter("v", Const.API_VERSION)
                 .build();
-        request = request.newBuilder().url(url).build();
 
+        Request.Builder requestBuilder = original.newBuilder()
+                .url(url);
+
+        Request request = requestBuilder.build();
         return chain.proceed(request);
     }
 }
