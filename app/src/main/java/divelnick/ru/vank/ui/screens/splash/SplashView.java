@@ -1,4 +1,4 @@
-package divelnick.ru.vank.ui.splash;
+package divelnick.ru.vank.ui.screens.splash;
 
 
 import divelnick.ru.vank.base.BaseView;

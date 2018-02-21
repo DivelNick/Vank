@@ -82,13 +82,13 @@ public class User {
         private Double x;
         @SerializedName("y")
         @Expose
-        private Integer y;
+        private Double y;
         @SerializedName("x2")
         @Expose
         private Double x2;
         @SerializedName("y2")
         @Expose
-        private Integer y2;
+        private Double y2;
 
         public Double getX() {
             return x;
@@ -98,11 +98,11 @@ public class User {
             this.x = x;
         }
 
-        public Integer getY() {
+        public Double getY() {
             return y;
         }
 
-        public void setY(Integer y) {
+        public void setY(Double y) {
             this.y = y;
         }
 
@@ -114,11 +114,11 @@ public class User {
             this.x2 = x2;
         }
 
-        public Integer getY2() {
+        public Double getY2() {
             return y2;
         }
 
-        public void setY2(Integer y2) {
+        public void setY2(Double y2) {
             this.y2 = y2;
         }
     }

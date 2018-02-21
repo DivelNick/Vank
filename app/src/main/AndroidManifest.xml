@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="divelnick.ru.vank">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.screens.splash.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".ui.intro.IntroActivity"
+            android:name=".ui.screens.intro.IntroActivity"
             android:screenOrientation="portrait"/>
 
         <activity
@@ -32,7 +32,9 @@
             android:label="ServiceActivity"
             android:theme="@style/VK.Transparent"/>
 
-        <activity android:name=".ui.main.MainActivity"/>
+        <activity
+            android:name=".ui.screens.main.MainActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package divelnick.ru.vank.ui.intro;
+package divelnick.ru.vank.ui.screens.intro;
 
 
 import android.os.Bundle;

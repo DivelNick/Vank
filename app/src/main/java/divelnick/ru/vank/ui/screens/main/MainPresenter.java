@@ -1,4 +1,4 @@
-package divelnick.ru.vank.ui.main;
+package divelnick.ru.vank.ui.screens.main;
 
 
 import android.util.Log;
@@ -23,7 +23,7 @@ class MainPresenter extends BasePresenter<MainView> {
 
     @Override
     public void initView() {
-        mMainModel.getUser("gad.aliev", Const.ALL_FIELDS).subscribe(user -> {
+        mMainModel.getUser("divelnick", Const.ALL_FIELDS).subscribe(user -> {
             Log.i(TAG, "initView: " + user.getResponse().get(0).getFirstName());
         });
     }

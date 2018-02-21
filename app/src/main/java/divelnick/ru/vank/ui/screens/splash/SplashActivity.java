@@ -1,4 +1,4 @@
-package divelnick.ru.vank.ui.splash;
+package divelnick.ru.vank.ui.screens.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,8 +20,8 @@ import divelnick.ru.vank.R;
 import divelnick.ru.vank.base.BaseActivity;
 import divelnick.ru.vank.data.managers.prefs.models.AccessToken;
 import divelnick.ru.vank.di.DaggerService;
-import divelnick.ru.vank.ui.intro.IntroActivity;
-import divelnick.ru.vank.ui.main.MainActivity;
+import divelnick.ru.vank.ui.screens.intro.IntroActivity;
+import divelnick.ru.vank.ui.screens.main.MainActivity;
 
 public class SplashActivity extends BaseActivity implements SplashView {
 
