@@ -3,7 +3,11 @@ package divelnick.ru.vank.ui.screens.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -13,6 +17,8 @@ import dagger.Provides;
 import divelnick.ru.vank.R;
 import divelnick.ru.vank.base.BaseActivity;
 import divelnick.ru.vank.di.DaggerService;
+import divelnick.ru.vank.ui.screens.main.list.Item;
+import divelnick.ru.vank.ui.screens.main.list.MainListAdapter;
 
 public class MainActivity extends BaseActivity implements MainView {
 
@@ -22,9 +28,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
-
-    private RecyclerView.LayoutManager mLayoutManager;
-
+    MainListAdapter mAdapter;
 
 
     @Override
@@ -38,6 +42,19 @@ public class MainActivity extends BaseActivity implements MainView {
 
         mMainPresenter.takeView(this);
         mMainPresenter.initView();
+
+        initUI();
+    }
+
+    private void initUI() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new MainListAdapter();
+        List<Item> list = new ArrayList<>();
+        Item item = new Item();
+        item.setViewType(MainListAdapter.USER_INFO_TYPE);
+        list.add(item);
+        mAdapter.setItems(list);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 
