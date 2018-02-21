@@ -16,5 +16,4 @@ public class ItemView extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-
 }

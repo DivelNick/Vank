@@ -15,6 +15,7 @@ public class NetworkStatusChecker {
 	private static Boolean isNetworkAvailable() {
 		ConnectivityManager cm = (ConnectivityManager)
 				App.getAppComponent().getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+		assert cm != null;
 		NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 		return networkInfo != null && networkInfo.isConnectedOrConnecting();
 	}
