@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Vank</string>
+
+    <!--MainScreen-->
+    <string name="wall">Стена</string>
+    <string name="friends">Друзья</string>
+    <string name="groups">Группы</string>
+    <string name="photo">Фото</string>
+    <string name="all_photos">Все фото</string>
+    <string name="audio">Аудио</string>
+
+
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus finibus metus a hendrerit. Vivamus scelerisque mollis urna, id finibus nisl dictum vel. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam eget ante scelerisque, ornare nunc eu, vestibulum est. Phasellus ullamcorper lacinia leo eu luctus. Aliquam at tincidunt odio, a finibus dui. Maecenas sed tellus efficitur, euismod risus id, pharetra sem. Nullam dignissim porta odio, nec convallis elit egestas vitae. Etiam in malesuada sem. Curabitur sed imperdiet turpis.
 
 Mauris tristique hendrerit efficitur. Vivamus nec risus eget urna vulputate gravida et at lectus. Integer laoreet tellus ac luctus feugiat. Morbi lobortis non purus ut vulputate. Maecenas et eleifend massa. Sed iaculis enim eu ligula blandit pulvinar. Nam iaculis ipsum commodo, rhoncus justo ac, pharetra nulla. Phasellus pulvinar libero vel quam venenatis dictum. Phasellus placerat sapien in orci interdum viverra. Nunc efficitur semper nisi, nec consequat velit pharetra eu.

@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="mainGreen">#43A047</color>
+
+    <!--item_wall_card-->
+    <color name="title_color">#3d52c6</color>
+
 </resources>
