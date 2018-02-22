@@ -50,8 +50,21 @@ public class MainActivity extends BaseActivity implements MainView {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new MainListAdapter();
         List<Item> list = new ArrayList<>();
+
         Item item = new Item();
         item.setViewType(MainListAdapter.USER_INFO_TYPE);
+        list.add(item);
+
+        item = new Item();
+        item.setViewType(MainListAdapter.TAB_VIEW_TYPE);
+        list.add(item);
+
+        item = new Item();
+        item.setViewType(MainListAdapter.INTERESTS_INFO_TYPE);
+        list.add(item);
+
+        item = new Item();
+        item.setViewType(MainListAdapter.WALL_TYPE);
         list.add(item);
         mAdapter.setItems(list);
         mRecyclerView.setAdapter(mAdapter);

@@ -66,6 +66,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     public void closeSplash(int delay) {
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
         }, delay);
     }
 

@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import divelnick.ru.vank.R;
 import divelnick.ru.vank.ui.widget.ItemView;
 
-public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHolder> {
+public class MainListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int USER_INFO_TYPE = 0;
     public static final int INTERESTS_INFO_TYPE = 1;
@@ -21,18 +23,59 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     private List<? extends Item> items;
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
         switch (viewType) {
             case USER_INFO_TYPE:
-                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_about, null));
+                return new UserInfoHolder(inflater.inflate(R.layout.item_user_about, parent, false));
+            case INTERESTS_INFO_TYPE:
+                return new InterestsInfoHolder(inflater.inflate(R.layout.item_user_interests, parent, false));
+            case TAB_VIEW_TYPE:
+                return new TabViewHolder(inflater.inflate(R.layout.item_simple_tab, parent, false));
+            case WALL_TYPE:
+                return new WallViewHolder(inflater.inflate(R.layout.item_wall_card, parent, false));
         }
+
         return null;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        ((ItemView)holder.mView).addView("rerer",R.drawable.ic_chat_bubble_black_24px);
-        ((ItemView)holder.mView).addView("rerer",R.drawable.ic_chat_bubble_black_24px);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        switch (getItemViewType(position)) {
+            case USER_INFO_TYPE:
+                onBindUserInfo((UserInfoHolder) holder, position);
+                break;
+            case INTERESTS_INFO_TYPE:
+                onBindInterestsInfo((InterestsInfoHolder) holder, position);
+                break;
+            case TAB_VIEW_TYPE:
+                onBindTabView((TabViewHolder) holder, position);
+                break;
+            case WALL_TYPE:
+                onBindWallView((WallViewHolder) holder, position);
+                break;
+        }
+
+    }
+
+    private void onBindUserInfo(UserInfoHolder holder, int position) {
+        ((ItemView) holder.mView).addView("rerer", R.drawable.ic_chat_bubble_black_24px);
+        ((ItemView) holder.mView).addView("rerer", R.drawable.ic_chat_bubble_black_24px);
+    }
+
+    private void onBindInterestsInfo(InterestsInfoHolder holder, int position) {
+
+    }
+
+    private void onBindTabView(TabViewHolder holder, int position) {
+
+    }
+
+    private void onBindWallView(WallViewHolder holder, int position) {
+
     }
 
     @Override
@@ -46,14 +89,33 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class UserInfoHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.container)
         View mView;
-        ViewHolder(View itemView) {
+
+        UserInfoHolder(View itemView) {
             super(itemView);
-            mView = itemView;
+            ButterKnife.bind(this, itemView);
         }
     }
 
+    class InterestsInfoHolder extends RecyclerView.ViewHolder {
+        public InterestsInfoHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    class TabViewHolder extends RecyclerView.ViewHolder {
+        public TabViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    class WallViewHolder extends RecyclerView.ViewHolder {
+        public WallViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
 
     public void setItems(List<? extends Item> items) {
         this.items = items;
